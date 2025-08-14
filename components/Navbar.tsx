@@ -8,8 +8,10 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 
-const Navbar = () => {
+const Navbar = async () => {
+  const user = await currentUser();
   return (
     <nav className="navbar">
       <Link href="/">
@@ -36,17 +38,14 @@ const Navbar = () => {
         <Link href="/companions" className="nav-link-underline">
           Companions
         </Link>
-        <SignedIn>
-          <Link href="/tier" className="nav-link-underline">
-            Tier
-          </Link>
+        <Link href="/tier" className="nav-link-underline">
+          Tier
+        </Link>
+        {user ? (
           <Link href="/profile" className="nav-link-underline">
             Profile
           </Link>
-        </SignedIn>
-
-        {/* Authentication Section */}
-        <SignedOut>
+        ) : (
           <div className="flex items-center gap-4">
             <SignInButton mode="modal">
               <button className="btn-signin">
@@ -69,7 +68,9 @@ const Navbar = () => {
               </button>
             </SignInButton>
           </div>
-        </SignedOut>
+        )}
+
+        {/* Authentication Section */}
 
         <SignedIn>
           <div className="flex items-center gap-4">

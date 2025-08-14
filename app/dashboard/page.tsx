@@ -4,6 +4,7 @@ import Image from "next/image";
 import CompanionCard from "@/components/CompanionCard";
 import { getSubjectColor, recentSessions } from "@/constants";
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
+
 import {
   getCompanions,
   getRecentSessions,
@@ -16,6 +17,7 @@ export const dynamic = "force-dynamic"; // forces runtime rendering
 const Dashboard = async () => {
   const companions = await getCompanions({ limit: 3 });
   const recentSessionsCompanions = await getRecentSessions(10);
+ 
   return (
     <>
       <SignedIn>
