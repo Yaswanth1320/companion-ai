@@ -11,6 +11,7 @@ import {
 import CompanionsList from "@/components/CompanionList";
 import Cta from "@/components/CTA";
 
+export const dynamic = "force-dynamic"; // forces runtime rendering
 
 const Dashboard = async () => {
   const companions = await getCompanions({ limit: 3 });
