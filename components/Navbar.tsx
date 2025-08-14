@@ -37,6 +37,9 @@ const Navbar = () => {
           Companions
         </Link>
         <SignedIn>
+          <Link href="/tier" className="nav-link-underline">
+            Tier
+          </Link>
           <Link href="/profile" className="nav-link-underline">
             Profile
           </Link>

@@ -14,7 +14,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
-import { createCompanion } from "@/lib/actions/companions.actions";
+import {
+  createCompanion,
+  newCompanionPermissions,
+} from "@/lib/actions/companions.actions";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -94,7 +97,7 @@ const BuildCompanion = () => {
   return (
     <>
       <SignedIn>
-        <main className="bg-gradient-to-br from-background via-background to-muted/20 py-12 px-6 sm:px-8 lg:px-12 xl:px-20">
+        <main className="bg-gradient-to-br from-background via-background to-muted/20 py-4 px-6 sm:px-8 lg:px-12 xl:px-20">
           <div className="max-w-8xl mx-auto">
             {/* Header */}
             {/* <div className="text-center mb-12">
@@ -108,7 +111,7 @@ const BuildCompanion = () => {
             </div> */}
 
             {/* Form Card */}
-            <div className="bg-card rounded-3xl border border-border/50 shadow-2xl p-8 sm:p-10 lg:p-18">
+            <div className="bg-card rounded-3xl border border-border/50 shadow-2xl p-4 sm:p-10 lg:p-18">
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
